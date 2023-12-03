@@ -6,6 +6,10 @@ namespace AdsServer
 {
     internal class Program
     {
+        static void Log(string a)
+        {
+            Console.WriteLine($"[{DateTime.Now}] : {a}");
+        }
         static Random random = new Random();
         static GetImgsRequest HandleImgsRequest()
         {
@@ -38,8 +42,9 @@ namespace AdsServer
                         {
                             ThreadHelper.CreateThread(() =>
                             {
-
+                             
                                 var context = t;
+                                Log(context.Request.Url.AbsolutePath);
                                 string[] requestUrlSplited = context.Request.Url.AbsolutePath.Split("/", StringSplitOptions.RemoveEmptyEntries);
                                 string jsonRespone = "";
 
