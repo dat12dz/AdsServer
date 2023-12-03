@@ -25,7 +25,7 @@ namespace AdsServer
 
 
             HttpListener listener = new HttpListener();
-            listener.Prefixes.Add("http://localhost:8080/");
+            listener.Prefixes.Add("https://*:8080/");
             listener.Start();
 
             Thread getContextThread = new Thread(() =>
@@ -78,7 +78,7 @@ namespace AdsServer
                         throw;
 
 #else
-       Console.WriteLine(e.Message);
+                         e.PrintExceptionInfo();
 #endif
                     }
 
